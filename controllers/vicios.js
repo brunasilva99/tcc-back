@@ -29,10 +29,10 @@ export const addVicios = (req, res) => {
       req.body.icone,
     ];
   
-    db.query(q, [values], (err) => {
+    db.query(q, [values], (err, data) => {
       if (err) return res.json(err);
   
-      return res.status(200).json("Vicio registrado com sucesso.");
+      return res.status(200).json({ id: data.insertId });
     });
   };
   
