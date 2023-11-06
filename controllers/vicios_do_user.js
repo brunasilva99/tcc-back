@@ -38,14 +38,14 @@ export const addViciosUser = (req, res) => {
   
   export const updateViciosUser = (req, res) => {
     const q =
-      "UPDATE vicios_do_user SET `id_vicio` = ?, `data_abs` = ? WHERE `id` = ?";
+      "UPDATE vicios_do_user SET `data_abs` = ? WHERE vicios_do_user.`id` = ?";
   
     const values = [
-      req.body.id_vicio,
-      req.body.data_abs
+      req.body.data_abs,
+      req.body.id
     ];
   
-    db.query(q, [...values, req.params.id], (err) => {
+    db.query(q, [...values], (err) => {
       if (err) return res.json(err);
   
       return res.status(200).json("Data atualizada com sucesso.");
@@ -54,10 +54,14 @@ export const addViciosUser = (req, res) => {
   
   export const deleteViciosUser = (req, res) => {
     const q = "DELETE FROM vicios_do_user WHERE `id` = ?";
+
+    const values = [
+      req.body.id
+    ];
   
-    db.query(q, [req.params.id], (err) => {
+    db.query(q, [values], (err) => {
       if (err) return res.json(err);
   
-      return res.status(200).json("Vicio do usuário deletado com sucesso.");
+      return res.status(200).json("Vicio do usuÃ¡rio deletado com sucesso.");
     });
   };

@@ -9,8 +9,8 @@ router.get("/:id", getViciosUser);
 
 router.post("/", addViciosUser);
 
-router.put("/:id", updateViciosUser);
+router.put("/", updateViciosUser);
 
-router.delete("/:id", deleteViciosUser);
+router.delete("/", deleteViciosUser);
 
 export default router
